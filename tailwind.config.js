@@ -11,6 +11,9 @@ export default {
       lightPrimary: '#c9acff',
       customRed: '#ff4343',
       body: '#363636',
+      white: '#fff',
+      black: '#000',
+      lightGray: '#d1d1d1',
     },
     extend: {
     },
