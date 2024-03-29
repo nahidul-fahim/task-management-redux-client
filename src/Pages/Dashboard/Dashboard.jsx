@@ -1,5 +1,6 @@
 import { useState } from "react";
-import TaskAddingModal from "../../Components/TaskAddingModal/TaskAddingModal";
+import AddTaskForm from "../../Components/AddTaskForm/AddTaskForm";
+
 
 
 const Dashboard = () => {
@@ -14,8 +15,8 @@ const Dashboard = () => {
             <button
                 onClick={() => setIsOpen(true)}
                 className="bg-primary px-4 py-3 rounded hover:bg-second duration-500 text-white">Add Task</button>
-            {/* Task adding modal component */}
-            <TaskAddingModal isOpen={isOpen} setIsOpen={setIsOpen} />
+            {/* Task adding form component */}
+            <AddTaskForm isOpen={isOpen} setIsOpen={setIsOpen} />
 
             {/* tasks showing div */}
             <div className="w-full grid grid-cols-3 gap-8">
