@@ -8,7 +8,7 @@ export default {
     colors: {
       primary: '#5720bd',
       second: '#482b7c',
-      lightPrimary: '#c9acff',
+      lightPrimary: '#dbc7ff',
       customRed: '#ff4343',
       body: '#363636',
       white: '#fff',
@@ -18,5 +18,5 @@ export default {
     extend: {
     },
   },
-  plugins: [],
+  plugins: [require("daisyui")],
 }
