@@ -11,9 +11,9 @@ const TaskCard = () => {
             <p className="text-body text-[15px]">Date: Good Date</p>
 
             {/* actions */}
-            <div className="flex justify-between items-center w-full">
-                <button className="text-[red] font-semibold duration-300 text-[15px] hover:text-[#ac1717]">Remove task</button>
-                <button className="text-primary font-semibold duration-300 text-[15px] hover:text-second">Update task</button>
+            <div className="flex justify-between items-center w-full mt-2">
+                <button className="text-[red] border border-[red] hover:bg-[red] hover:text-white rounded px-3 py-1 font-medium duration-300 text-[15px]">Remove task</button>
+                <button className="text-primary border border-primary px-3 py-1 rounded font-medium duration-300 text-[15px] hover:text-white hover:bg-primary">Update status</button>
             </div>
         </div>
     );
