@@ -1,11 +1,18 @@
+import { useDispatch } from "react-redux";
 import TasksModal from "../TasksModal/TasksModal";
+import { addTask } from "../../redux/features/tasksSlice";
+
+// array data for task adding form
+const assignersName = ["Nahidul Islan", "Nazmul Islam", "Karib Shahriar", "Imtiaz Hossain", "S M Rasel", "Mashub Yousuf"];
+const priorityList = ["low", "moderate", "important"]
 
 const AddTaskForm = ({ isOpen, setIsOpen }) => {
 
+    // hooks
+    const dispatch = useDispatch(); // hook from react redux
+
     // date
     const todayDate = new Date().toISOString().split('T')[0];
-    const assignersName = ["Nahidul Islan", "Nazmul Islam", "Karib Shahriar", "Imtiaz Hossain", "S M Rasel", "Mashub Yousuf"];
-    const priorityList = ["low", "moderate", "important"]
 
     // modal closing function
     function closeModal() {
@@ -22,9 +29,13 @@ const AddTaskForm = ({ isOpen, setIsOpen }) => {
         const deadline = form.deadline.value;
         const assignTo = form.assignTo.value;
         const priority = form.priority.value;
-        
-        const newTaskData = {title, description, deadline, assignTo, priority};
+
+        const newTaskData = { title, description, deadline, assignTo, priority };
         console.log(newTaskData)
+
+        // add the form data to redux
+        dispatch(addTask(newTaskData));
+
     }
 
 
@@ -33,8 +44,8 @@ const AddTaskForm = ({ isOpen, setIsOpen }) => {
 
             {/* task adding form */}
             <form
-            onSubmit={handleTaskAssign}
-            className="w-full flex flex-col justify-center items-center gap-5">
+                onSubmit={handleTaskAssign}
+                className="w-full flex flex-col justify-center items-center gap-5">
 
                 {/* title */}
                 <div className="w-full flex flex-col justify-start items-start gap-2">
