@@ -1,5 +1,6 @@
 import { useState } from "react";
 import AddTaskForm from "../../Components/AddTaskForm/AddTaskForm";
+import TaskCard from "../../Components/TaskCard/TaskCard";
 
 
 
@@ -22,26 +23,41 @@ const Dashboard = () => {
             <div className="w-full grid grid-cols-3 gap-8">
                 {/* Up next */}
                 <div className="border border-lightGray rounded p-5">
+
+                    {/* title bar */}
                     <div className="w-full px-4 py-2 bg-lightPrimary flex justify-between items-center">
                         <p className="w-full font-semibold rounded">Up Next</p>
                         <p className="bg-primary text-[14px] p-1 rounded text-white">0</p>
                     </div>
+
+                    {/* tasks list */}
+                    <TaskCard />
                 </div>
 
                 {/* In progress */}
                 <div className="border border-lightGray rounded p-5">
+
+                    {/* title bar */}
                     <div className="w-full px-4 py-2 bg-[#d5d5ff] flex justify-between items-center">
                         <p className="w-full font-semibold rounded">In progress</p>
                         <p className="bg-[#4545ff] text-[14px] p-1 rounded text-white">0</p>
                     </div>
+
+                    {/* tasks list */}
+                    <TaskCard />
                 </div>
 
                 {/* Completed */}
                 <div className="border border-lightGray rounded p-5">
+
+                    {/* title bar */}
                     <div className="w-full px-4 py-2 bg-[#c9ffcd] flex justify-between items-center">
                         <p className="w-full font-semibold rounded">Completed</p>
                         <p className="bg-[#128a40] text-[14px] p-1 rounded text-white">0</p>
                     </div>
+
+                    {/* tasks list */}
+                    <TaskCard />
                 </div>
 
             </div>

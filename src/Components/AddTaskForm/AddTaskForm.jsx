@@ -31,11 +31,10 @@ const AddTaskForm = ({ isOpen, setIsOpen }) => {
         const priority = form.priority.value;
 
         const newTaskData = { title, description, deadline, assignTo, priority };
-        console.log(newTaskData)
 
         // add the form data to redux
         dispatch(addTask(newTaskData));
-
+        closeModal();
     }
 
 
