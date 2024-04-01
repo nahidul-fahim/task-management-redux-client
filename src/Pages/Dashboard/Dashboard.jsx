@@ -1,6 +1,7 @@
 import { useState } from "react";
 import AddTaskForm from "../../Components/AddTaskForm/AddTaskForm";
 import TaskCard from "../../Components/TaskCard/TaskCard";
+import { useSelector } from "react-redux";
 
 
 
@@ -8,6 +9,15 @@ const Dashboard = () => {
 
     // modal opening state management
     const [isOpen, setIsOpen] = useState(false);
+    // redux hook
+    const { tasks } = useSelector((state) => state.tasksSlice)
+
+    // task length of different categories
+    const upNextTasks = tasks.filter(task => task.status === "pending");
+    const inProgressTasks = tasks.filter(task => task.status === "running");
+    const completedTasks = tasks.filter(task => task.status === "done");
+
+
 
     return (
         <div className="container mx-auto p-5 flex flex-col justify-center items-center gap-8">
@@ -23,15 +33,15 @@ const Dashboard = () => {
             <div className="w-full grid grid-cols-3 gap-8">
                 {/* Up next */}
                 <div className="border border-lightGray rounded p-5">
-
                     {/* title bar */}
                     <div className="w-full px-4 py-2 bg-lightPrimary flex justify-between items-center">
                         <p className="w-full font-semibold rounded">Up Next</p>
-                        <p className="bg-primary text-[14px] p-1 rounded text-white">0</p>
+                        <p className="bg-primary text-[14px] p-1 rounded text-white">{upNextTasks.length}</p>
                     </div>
-
                     {/* tasks list */}
-                    <TaskCard />
+                    {
+                        tasks.map(task => task.status === "pending" && <TaskCard key={task.id} task={task}></TaskCard>)
+                    }
                 </div>
 
                 {/* In progress */}
@@ -40,11 +50,13 @@ const Dashboard = () => {
                     {/* title bar */}
                     <div className="w-full px-4 py-2 bg-[#d5d5ff] flex justify-between items-center">
                         <p className="w-full font-semibold rounded">In progress</p>
-                        <p className="bg-[#4545ff] text-[14px] p-1 rounded text-white">0</p>
+                        <p className="bg-[#4545ff] text-[14px] p-1 rounded text-white">{inProgressTasks.length}</p>
                     </div>
 
                     {/* tasks list */}
-                    <TaskCard />
+                    {
+                        tasks.map(task => task.status === "running" && <TaskCard key={task.id} task={task}></TaskCard>)
+                    }
                 </div>
 
                 {/* Completed */}
@@ -53,11 +65,13 @@ const Dashboard = () => {
                     {/* title bar */}
                     <div className="w-full px-4 py-2 bg-[#c9ffcd] flex justify-between items-center">
                         <p className="w-full font-semibold rounded">Completed</p>
-                        <p className="bg-[#128a40] text-[14px] p-1 rounded text-white">0</p>
+                        <p className="bg-[#128a40] text-[14px] p-1 rounded text-white">{completedTasks.length}</p>
                     </div>
 
                     {/* tasks list */}
-                    <TaskCard />
+                    {
+                        tasks.map(task => task.status === "done" && <TaskCard key={task.id} task={task}></TaskCard>)
+                    }
                 </div>
 
             </div>
