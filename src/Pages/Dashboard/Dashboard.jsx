@@ -2,17 +2,19 @@ import { useState } from "react";
 import AddTaskForm from "../../Components/AddTaskForm/AddTaskForm";
 import TaskCard from "../../Components/TaskCard/TaskCard";
 import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 
 
 
 const Dashboard = () => {
 
+    // getting the current signed in user id
+    const { id } = useParams();
+
     // modal opening state management
     const [isOpen, setIsOpen] = useState(false);
     // redux hook
     const { tasks } = useSelector((state) => state.tasksSlice)
-
-    console.log("tasks list", tasks)
 
     // task length of different categories
     const upNextTasks = tasks.filter(task => task.status === "pending");

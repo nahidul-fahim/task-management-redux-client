@@ -13,10 +13,10 @@ const Navbar = () => {
             </div>
 
             {/* links */}
-            <div className="flex justify-end items-center gap-10 font-medium">
+            {/* <div className="flex justify-end items-center gap-10 font-medium">
                 <Link to={"/"}>Home</Link>
                 <Link to={"/dashboard"}>Dashboard</Link>
-            </div>
+            </div> */}
         </div>
     );
 };
