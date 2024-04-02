@@ -27,12 +27,13 @@ export const tasksSlice = createSlice({
         },
         // remove task slice
         removeTask: (state, { payload }) => {
-            state.tasks.filter(item => item.id !== payload.id)
+            state.tasks = state.tasks.filter((item) => item.id !== payload)
         },
         // update task
         updateTask: (state, { payload }) => {
-            const target = state.tasks.filter((item) => item.id === payload);
-            target.status = 'running';
+            const target = state.tasks.find((item) => item.id === payload.id);
+            console.log(target);
+            target.status = payload.status;
         },
     }
 });

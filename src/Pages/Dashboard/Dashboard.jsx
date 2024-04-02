@@ -12,6 +12,8 @@ const Dashboard = () => {
     // redux hook
     const { tasks } = useSelector((state) => state.tasksSlice)
 
+    console.log("tasks list", tasks)
+
     // task length of different categories
     const upNextTasks = tasks.filter(task => task.status === "pending");
     const inProgressTasks = tasks.filter(task => task.status === "running");
@@ -40,37 +42,33 @@ const Dashboard = () => {
                     </div>
                     {/* tasks list */}
                     {
-                        tasks.map(task => task.status === "pending" && <TaskCard key={task.id} task={task}></TaskCard>)
+                        upNextTasks.map(task => <TaskCard key={task.id} task={task}></TaskCard>)
                     }
                 </div>
 
                 {/* In progress */}
                 <div className="border border-lightGray rounded p-5">
-
                     {/* title bar */}
                     <div className="w-full px-4 py-2 bg-[#d5d5ff] flex justify-between items-center">
                         <p className="w-full font-semibold rounded">In progress</p>
                         <p className="bg-[#4545ff] text-[14px] p-1 rounded text-white">{inProgressTasks.length}</p>
                     </div>
-
                     {/* tasks list */}
                     {
-                        tasks.map(task => task.status === "running" && <TaskCard key={task.id} task={task}></TaskCard>)
+                        inProgressTasks.map(task => <TaskCard key={task.id} task={task}></TaskCard>)
                     }
                 </div>
 
                 {/* Completed */}
                 <div className="border border-lightGray rounded p-5">
-
                     {/* title bar */}
                     <div className="w-full px-4 py-2 bg-[#c9ffcd] flex justify-between items-center">
                         <p className="w-full font-semibold rounded">Completed</p>
                         <p className="bg-[#128a40] text-[14px] p-1 rounded text-white">{completedTasks.length}</p>
                     </div>
-
                     {/* tasks list */}
                     {
-                        tasks.map(task => task.status === "done" && <TaskCard key={task.id} task={task}></TaskCard>)
+                        completedTasks.map(task => <TaskCard key={task.id} task={task}></TaskCard>)
                     }
                 </div>
 

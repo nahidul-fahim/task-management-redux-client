@@ -5,7 +5,20 @@ import { removeTask, updateTask } from "../../redux/features/tasksSlice";
 const TaskCard = ({ task }) => {
 
     // redux hook
-    const dispatch = useDispatch();
+    const dispatch = useDispatch()
+
+    // updating the task status
+    let updateStatus;
+
+    if (task.status === "pending") {
+        updateStatus = 'running'
+    }
+    else if (task.status === "running") {
+        updateStatus = "done"
+    }
+    else {
+        updateStatus = "archive"
+    }
 
 
     return (
@@ -25,7 +38,7 @@ const TaskCard = ({ task }) => {
 
                 {/* update task */}
                 <button
-                    onClick={() => dispatch(updateTask(task.id))}
+                    onClick={() => dispatch(updateTask({ id: task.id, status: updateStatus }))}
                     className="text-primary border border-primary px-3 py-1 rounded font-medium duration-300 text-[15px] hover:text-white hover:bg-primary">Update status</button>
             </div>
         </div>
