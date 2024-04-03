@@ -9,14 +9,14 @@ import { useParams } from "react-router-dom";
 const Dashboard = () => {
 
     // getting the current signed in user id
-    const { id } = useParams();
+    const { id: currentUser } = useParams();
 
     // modal opening state management
     const [isOpen, setIsOpen] = useState(false);
     // redux hook
     const { tasks } = useSelector((state) => state.tasksSlice)
 
-    // task length of different categories
+    // getting the task length of different categories
     const upNextTasks = tasks.filter(task => task.status === "pending");
     const inProgressTasks = tasks.filter(task => task.status === "running");
     const completedTasks = tasks.filter(task => task.status === "done");
