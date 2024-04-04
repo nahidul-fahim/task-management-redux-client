@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AddTaskForm from "../../Components/AddTaskForm/AddTaskForm";
 import TaskCard from "../../Components/TaskCard/TaskCard";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { setCurrentUserTasks } from "../../redux/features/tasksSlice";
 
 
 
@@ -10,16 +11,28 @@ const Dashboard = () => {
 
     // getting the current signed in user id
     const { id: currentUser } = useParams();
-
-    // modal opening state management
+    
+    // hooks
+    const dispatch = useDispatch();
+    const { tasks, currentUserTasks } = useSelector((state) => state.tasksSlice)
     const [isOpen, setIsOpen] = useState(false);
-    // redux hook
-    const { tasks } = useSelector((state) => state.tasksSlice)
+
+    // show current user tasks only
+    useEffect(() => {
+        dispatch(setCurrentUserTasks(currentUser))
+    }, [currentUser, dispatch, tasks])
+
+    console.log(currentUserTasks)
+
 
     // getting the task length of different categories
     const upNextTasks = tasks.filter(task => task.status === "pending");
     const inProgressTasks = tasks.filter(task => task.status === "running");
     const completedTasks = tasks.filter(task => task.status === "done");
+
+
+
+
 
 
 
@@ -44,7 +57,7 @@ const Dashboard = () => {
                     </div>
                     {/* tasks list */}
                     {
-                        upNextTasks.map(task => <TaskCard key={task.id} task={task}></TaskCard>)
+                        upNextTasks.map(task => <TaskCard key={task.id} task={task} currentUser={currentUser}></TaskCard>)
                     }
                 </div>
 

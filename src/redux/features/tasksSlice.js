@@ -35,12 +35,12 @@ export const tasksSlice = createSlice({
             const target = state.tasks.find((item) => item.id === payload.id);
             target.status = payload.status;
         },
-        setUserTasks: (state, { payload }) => {
-            state.currentUserTasks = state.tasks.filter(task => task.assignedTo === payload)
+        setCurrentUserTasks: (state, { payload }) => {
+            state.currentUserTasks === state.tasks.filter((task) => task.assignTo.split(' ').join('').toLowerCase() === payload)
         },
     }
 });
 
-export const { addTask, removeTask, updateTask, setUserTasks } = tasksSlice.actions;
+export const { addTask, removeTask, updateTask, setCurrentUserTasks } = tasksSlice.actions;
 
 export default tasksSlice.reducer;
