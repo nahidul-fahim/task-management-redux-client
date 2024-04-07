@@ -22,7 +22,7 @@ const Dashboard = () => {
         dispatch(setCurrentUserTasks(currentUser))
     }, [currentUser, dispatch, tasks])
 
-    console.log(currentUserTasks)
+    // console.log(currentUserTasks)
 
 
     // getting the task length of different categories
