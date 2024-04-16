@@ -36,7 +36,8 @@ export const tasksSlice = createSlice({
             target.status = payload.status;
         },
         setCurrentUserTasks: (state, { payload }) => {
-            state.currentUserTasks === state.tasks.filter((task) => task.assignTo.split(' ').join('').toLowerCase() === payload)
+            console.log("payload:", payload)
+            state.currentUserTasks = state.tasks.filter((task) => task.assignTo.split(' ').join('').toLowerCase() === payload)
         },
     }
 });

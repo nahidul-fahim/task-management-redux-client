@@ -34,12 +34,12 @@ const TaskCard = ({ task }) => {
                 {/* remove task */}
                 <button
                     onClick={() => dispatch(removeTask(task.id))}
-                    className="text-[red] border border-[red] hover:bg-[red] hover:text-white rounded px-3 py-1 font-medium duration-300 text-[15px]">Remove task</button>
+                    className="text-[red] border border-[red] hover:bg-[red] hover:text-white rounded px-3 py-1 font-medium duration-300 text-[15px]">Remove</button>
 
                 {/* update task */}
                 <button
                     onClick={() => dispatch(updateTask({ id: task.id, status: updateStatus }))}
-                    className="text-primary border border-primary px-3 py-1 rounded font-medium duration-300 text-[15px] hover:text-white hover:bg-primary">Update status</button>
+                    className="text-primary border border-primary px-3 py-1 rounded font-medium duration-300 text-[15px] hover:text-white hover:bg-primary">Update</button>
             </div>
         </div>
     );
