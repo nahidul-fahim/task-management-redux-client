@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Root from "../Layout/Root/Root";
 import Home from "../Pages/Home";
 import Dashboard from "../Pages/Dashboard/Dashboard";
+import Feed from "../Pages/Feed/Feed";
 
 const router = createBrowserRouter([
     {
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
             {
                 path: "/dashboard/:id",
                 element: <Dashboard />
+            },
+            {
+                path: "/feed",
+                element: <Feed />
             }
         ]
     }

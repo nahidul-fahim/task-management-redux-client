@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const assignersName = ["Nahidul Islan", "Nazmul Islam", "Karib Shahriar", "Imtiaz Hossain", "S M Rasel", "Mashub Yousuf"];
 
@@ -19,6 +19,13 @@ const Home = () => {
 
     return (
         <div className="min-h-screen mt-[-100px] flex flex-col justify-center items-center gap-5">
+
+            {/* links routes */}
+            <div className="flex justify-center items-center gap-7 my-8">
+                <Link to={"/feed"} className="text-xl text-primary border border-primary px-2 py-1 rounded hover:scale-105 duration-300">Feed</Link>
+            </div>
+
+
             <h2 className="text-5xl font-bold text-black">Go to Task Management</h2>
 
             {/* assign to */}
