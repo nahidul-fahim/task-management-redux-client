@@ -6,7 +6,9 @@ export default {
   ],
   theme: {
     colors: {
-      primary: '#5720bd',
+      customBackground: '#2b2b2b',
+      customForeground: '#c4c4c4',
+      primary: '#7124ff',
       second: '#482b7c',
       lightPrimary: '#dbc7ff',
       customRed: '#ff4343',
