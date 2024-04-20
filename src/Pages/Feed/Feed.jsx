@@ -1,4 +1,4 @@
-import { useGetPostsByIdQuery, useGetPostsQuery } from "../../redux/features/api/baseApi";
+import { useGetPostsByIdQuery, useGetPostsQuery, useSetPostMutation } from "../../redux/features/api/baseApi";
 
 
 
@@ -8,7 +8,20 @@ const Feed = () => {
     const { data: posts, isLoading, isError, error } = useGetPostsQuery(); // This returns an object
 
     // dynamic data fetching
-    // const { data: posts, isLoading, isError, error } = useGetPostsByIdQuery(10);
+    // const { data: posts, isLoading, isError, error } = useGetPostsByIdQuery(10);F
+
+    // mutation hook
+    const [setPost, { data: postData }] = useSetPostMutation();
+
+    // showing new post data
+    console.log(postData)
+
+    // handle post new post
+    const handleNewPost = e => {
+        e.preventDefault();
+        const post = e.target.newPost.value;
+        setPost({ post })
+    }
 
 
 
@@ -18,7 +31,9 @@ const Feed = () => {
 
 
             {/* new post form */}
-            <form className="flex justify-center items-center gap-5 my-8">
+            <form
+                onSubmit={handleNewPost}
+                className="flex justify-center items-center gap-5 my-8">
                 <input type="text" name="newPost" id="newPost" className="bg-customForeground px-4 py-2 rounded focus:outline-none w-2/4" />
                 <input type="submit" value="Post" className="bg-primary text-white px-4 py-2 rounded" />
             </form>
